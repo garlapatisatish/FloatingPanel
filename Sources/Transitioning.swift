@@ -93,7 +93,7 @@ class ModalPresentTransition: NSObject, UIViewControllerAnimatedTransitioning {
     func interruptibleAnimator(using transitionContext: UIViewControllerContextTransitioning) -> UIViewImplicitlyAnimating {
         guard
             let fpc = transitionContext.viewController(forKey: .to) as? FloatingPanelController
-        else { fatalError() }
+        else { return UIViewPropertyAnimator() }
 
         if let animator = fpc.transitionAnimator {
             return animator
@@ -128,7 +128,7 @@ class ModalDismissTransition: NSObject, UIViewControllerAnimatedTransitioning {
     func interruptibleAnimator(using transitionContext: UIViewControllerContextTransitioning) -> UIViewImplicitlyAnimating {
         guard
             let fpc = transitionContext.viewController(forKey: .from) as? FloatingPanelController
-        else { fatalError() }
+        else { return UIViewPropertyAnimator() }
 
         if let animator = fpc.transitionAnimator {
             return animator
